@@ -20,107 +20,107 @@
     --amber-soft: #F6EADA;
     --rose: #A6402F;
     --rose-soft: #F5E4E0;
-    --sidebar-w: 220px;
+    --sidebar-w: 226px;
+    --shadow: 0 1px 2px rgba(27,42,36,.04), 0 4px 14px rgba(27,42,36,.05);
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
   .mono{ font-family:'IBM Plex Mono',monospace; }
   .display{ font-family:'Fraunces',serif; }
 
   /* ---------- Login ---------- */
   #login{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-  .login-card{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:40px 36px; max-width:380px; width:100%; text-align:center; }
+  .login-card{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:44px 38px; max-width:380px; width:100%; text-align:center; box-shadow:var(--shadow); }
   .brand-dot{ width:9px;height:9px;border-radius:50%;background:var(--pine); display:inline-block; margin-right:8px; }
-  .login-card h1{ font-size:22px; margin:14px 0 2px; }
-  .login-card .sub{ font-size:12px; letter-spacing:.04em; color:var(--ink-soft); margin-bottom:24px; }
+  .login-card h1{ font-size:23px; margin:14px 0 2px; }
+  .login-card .sub{ font-size:12px; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:24px; }
   .login-card p{ font-size:14px; color:var(--ink-soft); line-height:1.5; margin-bottom:22px; }
-  #password{ width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:3px; font-size:15px; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; margin-bottom:14px; background:#FAFBF9; }
+  #password{ width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:6px; font-size:15px; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; margin-bottom:14px; background:#FAFBF9; }
   #password:focus{ outline:2px solid var(--pine); outline-offset:1px; }
-  #loginBtn{ width:100%; padding:12px; border:none; border-radius:3px; background:var(--pine); color:#fff; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
+  #loginBtn{ width:100%; padding:12px; border:none; border-radius:6px; background:var(--pine); color:#fff; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
   #loginBtn:hover{ background:#0C3F31; }
   #loginError{ color:var(--rose); font-size:13px; margin-top:14px; min-height:18px; }
 
   /* ---------- Layout geral ---------- */
   #appShell{ display:none; min-height:100vh; }
-  #sidebar{
-    width:var(--sidebar-w); flex-shrink:0; background:var(--paper); border-right:1px solid var(--line);
-    padding:22px 16px; position:sticky; top:0; height:100vh; overflow-y:auto;
-  }
-  #appShell{ display:none; }
   #appShell.show{ display:flex; }
+  #sidebar{ width:var(--sidebar-w); flex-shrink:0; background:var(--paper); border-right:1px solid var(--line); padding:24px 16px; position:sticky; top:0; height:100vh; overflow-y:auto; }
   .sidebar-brand{ display:flex; align-items:center; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:2px; }
-  .sidebar-title{ font-size:19px; margin:6px 0 24px; }
-  .nav-group-label{ font-size:10px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft); margin:18px 8px 8px; }
-  .nav-item{
-    display:flex; align-items:center; justify-content:space-between; padding:9px 10px; border-radius:4px;
-    font-size:13.5px; color:var(--ink); cursor:pointer; margin-bottom:2px; transition:background .12s;
-  }
+  .sidebar-title{ font-size:20px; margin:6px 0 26px; }
+  .nav-group-label{ font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); margin:20px 10px 8px; font-weight:600; }
+  .nav-item{ display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-radius:6px; font-size:13.5px; color:var(--ink); cursor:pointer; margin-bottom:2px; transition:background .12s; }
   .nav-item:hover{ background:var(--pine-soft); }
   .nav-item.active{ background:var(--pine); color:#fff; font-weight:600; }
   .nav-item .count{ font-size:11px; font-family:'IBM Plex Mono',monospace; opacity:.75; }
 
-  #mainArea{ flex:1; min-width:0; padding:28px 32px 80px; max-width:1080px; }
+  #mainArea{ flex:1; min-width:0; padding:30px 34px 90px; max-width:1120px; }
 
-  header.top{
-    display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px;
-    padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:28px;
-  }
-  header.top h1{ font-size:27px; margin:0; }
-  header.top .eyebrow{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; margin-bottom:4px; }
-  .controls{ display:flex; gap:10px; align-items:center; }
-  select{ padding:9px 12px; border:1px solid var(--line); border-radius:3px; background:var(--paper); font-family:'Inter',sans-serif; font-size:13px; color:var(--ink); cursor:pointer; }
-  .icon-btn{ border:1px solid var(--line); background:var(--paper); border-radius:3px; padding:9px 12px; cursor:pointer; font-size:13px; }
+  header.top{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:22px; border-bottom:1px solid var(--line); margin-bottom:22px; }
+  header.top h1{ font-size:28px; margin:0; }
+  header.top .eyebrow{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; margin-bottom:4px; letter-spacing:.04em; }
+
+  .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px; background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:12px 14px; box-shadow:var(--shadow); }
+  .filter-bar label{ font-size:11px; color:var(--ink-soft); margin-right:4px; }
+  select, input[type="date"]{ padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:#FAFBF9; font-family:'Inter',sans-serif; font-size:13px; color:var(--ink); cursor:pointer; }
+  input[type="date"]{ cursor:text; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
+  .icon-btn{ border:1px solid var(--line); background:var(--paper); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:13px; }
+  .icon-btn:hover{ background:var(--pine-soft); }
+  .filter-sep{ width:1px; height:22px; background:var(--line); margin:0 2px; }
+  .clear-filter{ font-size:12px; color:var(--pine); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:'Inter',sans-serif; }
   .updated{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; }
 
-  .kpi-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:32px; }
-  .kpi{ background:var(--paper); padding:20px 22px; }
-  .kpi .label{ font-size:12px; color:var(--ink-soft); margin-bottom:8px; }
-  .kpi .value{ font-size:30px; font-family:'Fraunces',serif; font-weight:600; line-height:1; }
+  .kpi-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+  .kpi{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:20px 20px; box-shadow:var(--shadow); }
+  .kpi .label{ font-size:12px; color:var(--ink-soft); margin-bottom:9px; }
+  .kpi .value{ font-size:29px; font-family:'Fraunces',serif; font-weight:600; line-height:1; }
   .kpi .value.pine{ color:var(--pine); }
+  .kpi .value.amber{ color:var(--amber); }
+  .kpi .value.rose{ color:var(--rose); }
 
-  section{ margin-bottom:36px; }
-  section h2{ font-size:13px; letter-spacing:.01em; color:var(--ink-soft); font-weight:600; margin:0 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  section{ margin-bottom:34px; }
+  section h2{ font-size:13px; letter-spacing:.01em; color:var(--ink-soft); font-weight:600; margin:0 0 14px; padding-bottom:9px; border-bottom:1px solid var(--line); }
 
-  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
-  @media (max-width:900px){ .two-col{ grid-template-columns:1fr; } .kpi-row{ grid-template-columns:1fr; } #appShell.show{ flex-direction:column; } #sidebar{ width:100%; height:auto; position:relative; } }
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:900px){ .two-col{ grid-template-columns:1fr; } .kpi-row{ grid-template-columns:1fr 1fr; } #appShell.show{ flex-direction:column; } #sidebar{ width:100%; height:auto; position:relative; } }
 
-  .team-card{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:18px 20px; margin-bottom:12px; cursor:pointer; transition:border-color .12s; }
+  .team-card{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:18px 20px; margin-bottom:12px; cursor:pointer; transition:border-color .12s, box-shadow .12s; box-shadow:var(--shadow); }
   .team-card:hover{ border-color:var(--pine); }
   .team-card .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px; }
   .team-card .lider{ font-size:15px; font-weight:600; }
-  .team-card .pct{ font-size:20px; font-family:'Fraunces',serif; font-weight:600; }
+  .team-card .pct{ font-size:21px; font-family:'Fraunces',serif; font-weight:600; }
   .team-card .meta{ font-size:12px; color:var(--ink-soft); }
-  .bar-track{ height:5px; background:var(--pine-soft); border-radius:3px; margin-top:10px; overflow:hidden; }
+  .bar-track{ height:6px; background:var(--pine-soft); border-radius:3px; margin-top:11px; overflow:hidden; }
   .bar-fill{ height:100%; background:var(--pine); border-radius:3px; }
 
-  table{ width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:4px; overflow:hidden; }
-  th{ text-align:left; font-size:11px; color:var(--ink-soft); font-weight:600; padding:10px 14px; border-bottom:1px solid var(--line); background:#FAFBF9; }
-  td{ padding:10px 14px; font-size:13px; border-bottom:1px solid var(--line); }
+  table{ width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
+  th{ text-align:left; font-size:11px; color:var(--ink-soft); font-weight:600; padding:11px 14px; border-bottom:1px solid var(--line); background:#FAFBF9; }
+  td{ padding:11px 14px; font-size:13px; border-bottom:1px solid var(--line); }
   tr:last-child td{ border-bottom:none; }
   td.num, th.num{ text-align:right; font-family:'IBM Plex Mono',monospace; }
   .rank{ color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:12px; width:24px; }
-  .flag{ display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; font-family:'IBM Plex Mono',monospace; }
+  .flag{ display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-family:'IBM Plex Mono',monospace; }
   .flag.high{ background:var(--rose-soft); color:var(--rose); }
   .flag.mid{ background:var(--amber-soft); color:var(--amber); }
   .flag.low{ background:var(--pine-soft); color:var(--pine); }
 
-  .chart-box{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:18px 20px; height:280px; }
+  .chart-box{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:18px 20px; height:280px; box-shadow:var(--shadow); }
+
+  .offender-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-bottom:20px; }
+  .offender-card{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:14px 16px; box-shadow:var(--shadow); }
+  .offender-card .rank-badge{ display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--pine-soft); color:var(--pine); font-size:11px; font-family:'IBM Plex Mono',monospace; font-weight:600; margin-bottom:8px; }
+  .offender-card .name{ font-size:13.5px; font-weight:600; margin-bottom:4px; }
+  .offender-card .stat{ font-size:12px; color:var(--ink-soft); }
+  .offender-card .stat b{ color:var(--rose); font-family:'IBM Plex Mono',monospace; }
 
   .view{ display:none; }
   .view.active{ display:block; }
 
-  #refreshBtn{ margin-top:10px; font-size:12px; color:var(--pine); background:none; border:none; cursor:pointer; text-decoration:underline; padding:0; font-family:'Inter',sans-serif; }
-  .empty{ padding:24px; text-align:center; color:var(--ink-soft); font-size:13px; }
-  .namechip{ display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; margin:2px 4px 2px 0; }
+  #refreshBtn{ margin-top:8px; font-size:12px; color:var(--pine); background:none; border:none; cursor:pointer; text-decoration:underline; padding:0; font-family:'Inter',sans-serif; }
+  .empty{ padding:26px; text-align:center; color:var(--ink-soft); font-size:13px; }
+  .namechip{ display:inline-block; padding:2px 9px; border-radius:10px; font-size:11px; margin:2px 4px 2px 0; }
   .namechip.fi{ background:var(--rose-soft); color:var(--rose); }
   .namechip.a{ background:var(--amber-soft); color:var(--amber); }
-  td.names{ max-width:340px; }
+  td.names{ max-width:360px; }
 </style>
 </head>
 <body>
@@ -154,33 +154,71 @@
   <main id="mainArea">
     <header class="top">
       <div>
-        <div class="eyebrow" id="viewEyebrow">PAINEL DE QUALIDADE · ABS</div>
+        <div class="eyebrow" id="viewEyebrow">PAINEL DE ABS · VISÃO GERAL</div>
         <h1 class="display" id="viewTitle">Visão geral</h1>
       </div>
-      <div class="controls">
-        <select id="mesSelect"></select>
-        <button id="refreshBtnTop" class="icon-btn" title="Atualizar">↻</button>
-      </div>
+      <div class="updated" id="updatedAt"></div>
     </header>
+
+    <div class="filter-bar">
+      <label>Mês</label>
+      <select id="mesSelect"></select>
+      <div class="filter-sep"></div>
+      <label>Semana</label>
+      <select id="semanaSelect"></select>
+      <div class="filter-sep"></div>
+      <label>De</label>
+      <input type="date" id="desdeInput">
+      <label>Até</label>
+      <input type="date" id="ateInput">
+      <button class="clear-filter" id="clearFilterBtn">Limpar filtro</button>
+      <div class="filter-sep"></div>
+      <label>Colaborador</label>
+      <input type="text" id="searchInput" placeholder="Buscar por nome..." style="padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:'Inter',sans-serif;font-size:13px;background:#FAFBF9;min-width:160px;">
+      <div style="flex:1"></div>
+      <button id="refreshBtnTop" class="icon-btn" title="Atualizar">↻ Atualizar</button>
+    </div>
 
     <!-- VISÃO GERAL -->
     <div class="view active" id="view-geral">
       <div class="kpi-row">
         <div class="kpi"><div class="label">ABS médio geral</div><div class="value pine" id="kpiPct">—</div></div>
-        <div class="kpi"><div class="label">Total de ausências (FI + A)</div><div class="value" id="kpiAus">—</div></div>
-        <div class="kpi"><div class="label">Colaboradores no mês</div><div class="value" id="kpiColab">—</div></div>
+        <div class="kpi"><div class="label">Média de FI por colaborador</div><div class="value rose" id="kpiMediaFI">—</div></div>
+        <div class="kpi"><div class="label">Média de Atestado por colaborador</div><div class="value amber" id="kpiMediaA">—</div></div>
+        <div class="kpi"><div class="label">Colaboradores no período</div><div class="value" id="kpiColab">—</div></div>
       </div>
+
+      <section>
+        <h2>Evolução mensal · % ABS ao longo do ano</h2>
+        <div class="chart-box"><canvas id="yearlyChart"></canvas></div>
+      </section>
 
       <section>
         <h2>ABS médio por equipe</h2>
         <div class="two-col">
           <div id="teamCards"></div>
-          <div class="chart-box"><canvas id="weeklyChart"></canvas></div>
+          <div class="chart-box"><canvas id="teamPieChart"></canvas></div>
         </div>
       </section>
 
       <section>
-        <h2>Ofensores · maior número de ausências no mês</h2>
+        <h2>Tendência semanal · % ABS</h2>
+        <div class="chart-box"><canvas id="weeklyChart"></canvas></div>
+      </section>
+
+      <section>
+        <h2>Principais motivos de ausência</h2>
+        <div class="two-col">
+          <div class="chart-box"><canvas id="motivosChart"></canvas></div>
+          <div>
+            <div class="kpi" style="margin-bottom:12px;"><div class="label">Total Falta Injustificada (FI)</div><div class="value rose" id="totalFIBig">—</div></div>
+            <div class="kpi"><div class="label">Total Atestado (A)</div><div class="value amber" id="totalABig">—</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ofensores · maior número de ausências no período</h2>
         <table>
           <thead><tr><th>#</th><th>Nome</th><th>Equipe</th><th class="num">Ausências</th><th class="num">% ABS</th></tr></thead>
           <tbody id="ofensoresBody"></tbody>
@@ -188,7 +226,7 @@
       </section>
 
       <section>
-        <h2>Datas com mais faltas no mês</h2>
+        <h2>Datas com mais faltas no período</h2>
         <table>
           <thead><tr><th>#</th><th>Data</th><th class="num">Total</th><th class="num">FI</th><th class="num">A</th><th>Colaboradores</th></tr></thead>
           <tbody id="datesBody"></tbody>
@@ -200,7 +238,6 @@
     <div id="teamViews"></div>
 
     <button id="refreshBtn">Atualizar dados agora</button>
-    <div class="updated" id="updatedAt" style="margin-top:6px;"></div>
   </main>
 </div>
 
@@ -209,15 +246,48 @@ const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/pessoalize.com/s/AKf
 
 let currentPassword = '';
 let weeklyChart = null;
+let teamPieChart = null;
+let yearlyChart = null;
+let motivosChart = null;
 let teamCharts = {};
 let currentView = 'geral';
+let lastData = null;
+let searchTerm = '';
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  searchTerm = e.target.value.trim().toLowerCase();
+  if (lastData) render(lastData);
+});
 
 document.getElementById('loginBtn').addEventListener('click', tryLogin);
 document.getElementById('password').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
 document.getElementById('refreshBtn').addEventListener('click', () => loadData(true));
 document.getElementById('refreshBtnTop').addEventListener('click', () => loadData(true));
-document.getElementById('mesSelect').addEventListener('change', () => loadData(false));
+document.getElementById('mesSelect').addEventListener('change', () => { resetPeriodFilter(); loadData(false); });
+document.getElementById('semanaSelect').addEventListener('change', onSemanaChange);
+document.getElementById('desdeInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
+document.getElementById('ateInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
+document.getElementById('clearFilterBtn').addEventListener('click', () => { resetPeriodFilter(); loadData(false); });
 document.querySelector('[data-view="geral"]').addEventListener('click', () => switchView('geral', 'Visão geral'));
+
+function resetPeriodFilter(){
+  document.getElementById('semanaSelect').value = '';
+  document.getElementById('desdeInput').value = '';
+  document.getElementById('ateInput').value = '';
+}
+
+function onSemanaChange(){
+  const sel = document.getElementById('semanaSelect');
+  const opt = sel.selectedOptions[0];
+  if (!opt || !opt.value) {
+    document.getElementById('desdeInput').value = '';
+    document.getElementById('ateInput').value = '';
+  } else {
+    document.getElementById('desdeInput').value = opt.dataset.desde;
+    document.getElementById('ateInput').value = opt.dataset.ate;
+  }
+  loadData(false);
+}
 
 function tryLogin(){
   const pw = document.getElementById('password').value.trim();
@@ -231,9 +301,14 @@ function tryLogin(){
 async function loadData(forceRefresh, isLogin){
   const mesSelect = document.getElementById('mesSelect');
   const mes = mesSelect.value || '';
-  const url = APPS_SCRIPT_URL + '?password=' + encodeURIComponent(currentPassword)
-            + (mes ? '&mes=' + encodeURIComponent(mes) : '')
-            + (forceRefresh ? '&refresh=1' : '');
+  const desde = document.getElementById('desdeInput').value;
+  const ate = document.getElementById('ateInput').value;
+
+  let url = APPS_SCRIPT_URL + '?password=' + encodeURIComponent(currentPassword);
+  if (mes) url += '&mes=' + encodeURIComponent(mes);
+  if (desde) url += '&desde=' + encodeURIComponent(desde);
+  if (ate) url += '&ate=' + encodeURIComponent(ate);
+  if (forceRefresh) url += '&refresh=1';
 
   try {
     const res = await fetch(url);
@@ -256,7 +331,11 @@ async function loadData(forceRefresh, isLogin){
     if (isLogin || mesSelect.options.length === 0) {
       populateMonths(data.availableMonths, data.month.key);
     }
+    populateSemanas(data.semanas);
+    lastData = data;
     render(data);
+
+    if (isLogin) loadYearlySummary();
   } catch (err) {
     document.getElementById('loginError').textContent = 'Não foi possível verificar a senha agora. Tente novamente em instantes.';
     document.getElementById('loginBtn').textContent = 'Entrar';
@@ -275,12 +354,60 @@ function populateMonths(months, selectedKey){
   });
 }
 
+function populateSemanas(semanas){
+  const sel = document.getElementById('semanaSelect');
+  const currentVal = sel.value;
+  sel.innerHTML = '<option value="">Mês completo</option>';
+  (semanas || []).forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = String(s.numero);
+    opt.textContent = s.label;
+    opt.dataset.desde = s.desde;
+    opt.dataset.ate = s.ate;
+    sel.appendChild(opt);
+  });
+  sel.value = currentVal || '';
+}
+
+async function loadYearlySummary(){
+  try {
+    const url = APPS_SCRIPT_URL + '?password=' + encodeURIComponent(currentPassword) + '&action=resumoAnual';
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.authorized && !data.error) renderYearly(data.meses);
+  } catch (err) {
+    // silencioso: gráfico de evolução mensal fica vazio se falhar
+  }
+}
+
+function renderYearly(meses){
+  const ctx = document.getElementById('yearlyChart');
+  if (!ctx) return;
+  const labels = meses.map(m => m.label);
+  const values = meses.map(m => +(m.pctAbsMedio*100).toFixed(1));
+  if (yearlyChart) yearlyChart.destroy();
+  yearlyChart = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [{ label: '% ABS médio', data: values, borderColor: '#10513F', backgroundColor: 'rgba(16,81,63,0.12)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10513F' }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#EDF1EC' } }, x: { grid: { display: false } } }
+    }
+  });
+}
+
 function pct(n){ return (n*100).toFixed(1).replace('.', ',') + '%'; }
+function num1(n){ return (n || 0).toFixed(1).replace('.', ','); }
 
 function flagFor(pctAbs){
   if (pctAbs >= 0.2) return 'high';
   if (pctAbs >= 0.1) return 'mid';
   return 'low';
+}
+
+function slug(s){
+  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-');
 }
 
 function switchView(key, title){
@@ -295,11 +422,33 @@ function switchView(key, title){
   document.getElementById('viewEyebrow').textContent = key === 'geral' ? 'PAINEL DE ABS · VISÃO GERAL' : 'PAINEL DE ABS · SUPERVISOR';
 }
 
+function periodoLabel(periodo){
+  if (!periodo) return '';
+  if (periodo.mesCompleto) return 'mês completo';
+  const [ay,am,ad] = periodo.desde.split('-');
+  const [by,bm,bd] = periodo.ate.split('-');
+  return ad + '/' + am + ' a ' + bd + '/' + bm;
+}
+
 function render(data){
   document.getElementById('kpiPct').textContent = pct(data.kpis.pctAbsMedio);
-  document.getElementById('kpiAus').textContent = data.kpis.totalAusencias;
+  document.getElementById('kpiMediaFI').textContent = num1(data.kpis.mediaFI);
+  document.getElementById('kpiMediaA').textContent = num1(data.kpis.mediaA);
   document.getElementById('kpiColab').textContent = data.kpis.totalColaboradores;
-  document.getElementById('updatedAt').textContent = 'Atualizado em ' + new Date(data.updatedAt).toLocaleString('pt-BR');
+  document.getElementById('updatedAt').textContent = 'Atualizado em ' + new Date(data.updatedAt).toLocaleString('pt-BR') + ' · período: ' + periodoLabel(data.periodo);
+  document.getElementById('totalFIBig').textContent = data.kpis.totalFI;
+  document.getElementById('totalABig').textContent = data.kpis.totalA;
+
+  const motivosCtx = document.getElementById('motivosChart');
+  if (motivosChart) motivosChart.destroy();
+  motivosChart = new Chart(motivosCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Falta Injustificada (FI)', 'Atestado (A)'],
+      datasets: [{ data: [data.kpis.totalFI, data.kpis.totalA], backgroundColor: ['#A6402F', '#B9791F'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'Inter', size: 12 } } } } }
+  });
 
   // ---- Nav lateral por supervisor ----
   const teamNav = document.getElementById('teamNav');
@@ -321,15 +470,31 @@ function render(data){
     const div = document.createElement('div');
     div.className = 'team-card';
     div.innerHTML = `
-      <div class="row">
-        <span class="lider">${t.lider}</span>
-        <span class="pct">${pct(t.pctAbsMedio)}</span>
-      </div>
-      <div class="meta">${t.headcount} colaboradores · ${t.totalAusencias} ausências no mês</div>
+      <div class="row"><span class="lider">${t.lider}</span><span class="pct">${pct(t.pctAbsMedio)}</span></div>
+      <div class="meta">${t.headcount} colaboradores · ${t.totalAusencias} ausências · média FI ${num1(t.mediaFI)} · média A ${num1(t.mediaA)}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${(t.pctAbsMedio/maxPct*100).toFixed(0)}%"></div></div>
     `;
     div.addEventListener('click', () => switchView('team-' + slug(t.lider), t.lider));
     teamWrap.appendChild(div);
+  });
+
+  // ---- Pizza: participação de cada equipe no total de ausências ----
+  const pieCtx = document.getElementById('teamPieChart');
+  if (teamPieChart) teamPieChart.destroy();
+  const pieColors = ['#10513F', '#B9791F', '#A6402F', '#5C6B63', '#3F7A5F'];
+  teamPieChart = new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: data.teams.map(t => t.lider),
+      datasets: [{ data: data.teams.map(t => t.totalAusencias), backgroundColor: data.teams.map((_, i) => pieColors[i % pieColors.length]), borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'Inter', size: 12 } } },
+        tooltip: { callbacks: { label: c => c.label + ': ' + c.raw + ' ausências' } }
+      }
+    }
   });
 
   // ---- Gráfico semanal (geral) ----
@@ -339,7 +504,7 @@ function render(data){
   if (weeklyChart) weeklyChart.destroy();
   weeklyChart = new Chart(ctx, {
     type: 'bar',
-    data: { labels, datasets: [{ label: '% ABS na semana', data: values, backgroundColor: '#10513F', borderRadius: 3, maxBarThickness: 36 }] },
+    data: { labels, datasets: [{ label: '% ABS na semana', data: values, backgroundColor: '#10513F', borderRadius: 4, maxBarThickness: 36 }] },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
@@ -350,17 +515,14 @@ function render(data){
   // ---- Ofensores (geral) ----
   const ofBody = document.getElementById('ofensoresBody');
   ofBody.innerHTML = '';
-  if (data.ofensores.length === 0) {
-    ofBody.innerHTML = '<tr><td colspan="5" class="empty">Nenhuma ausência registrada neste mês.</td></tr>';
+  const ofensoresFiltrados = data.ofensores.filter(o => !searchTerm || o.nome.toLowerCase().includes(searchTerm));
+  if (ofensoresFiltrados.length === 0) {
+    ofBody.innerHTML = '<tr><td colspan="5" class="empty">Nenhum resultado.</td></tr>';
   } else {
-    data.ofensores.forEach((o, i) => {
+    ofensoresFiltrados.forEach((o, i) => {
       const fc = flagFor(o.pctAbs);
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td class="rank">${i+1}</td><td>${o.nome}</td><td>${o.lider}</td>
-        <td class="num">${o.ausencias}</td>
-        <td class="num"><span class="flag ${fc}">${pct(o.pctAbs)}</span></td>
-      `;
+      tr.innerHTML = `<td class="rank">${i+1}</td><td>${o.nome}</td><td>${o.lider}</td><td class="num">${o.ausencias}</td><td class="num"><span class="flag ${fc}">${pct(o.pctAbs)}</span></td>`;
       ofBody.appendChild(tr);
     });
   }
@@ -369,12 +531,10 @@ function render(data){
   const dBody = document.getElementById('datesBody');
   dBody.innerHTML = '';
   if (data.worstDates.length === 0) {
-    dBody.innerHTML = '<tr><td colspan="6" class="empty">Nenhuma ausência registrada neste mês.</td></tr>';
+    dBody.innerHTML = '<tr><td colspan="6" class="empty">Nenhuma ausência registrada neste período.</td></tr>';
   } else {
     data.worstDates.forEach((d, i) => {
-      const chips = (d.nomes || []).map(n =>
-        `<span class="namechip ${n.tipo === 'FI' ? 'fi' : 'a'}">${n.nome} · ${n.tipo}</span>`
-      ).join('');
+      const chips = (d.nomes || []).map(n => `<span class="namechip ${n.tipo === 'FI' ? 'fi' : 'a'}">${n.nome} · ${n.tipo}</span>`).join('');
       const tr = document.createElement('tr');
       tr.innerHTML = `<td class="rank">${i+1}</td><td>${d.date}</td><td class="num">${d.total}</td><td class="num">${d.fi}</td><td class="num">${d.a}</td><td class="names">${chips}</td>`;
       dBody.appendChild(tr);
@@ -386,23 +546,33 @@ function render(data){
   teamViewsWrap.innerHTML = '';
   data.teams.forEach(t => {
     const teamAgents = (data.agentsByTeam && data.agentsByTeam[t.lider]) || [];
+    const teamOfensores = (data.ofensoresByTeam && data.ofensoresByTeam[t.lider]) || [];
     const viewDiv = document.createElement('div');
     viewDiv.className = 'view';
     viewDiv.id = 'view-team-' + slug(t.lider);
 
     let rowsHtml = '';
-    if (teamAgents.length === 0) {
-      rowsHtml = '<tr><td colspan="3" class="empty">Nenhum colaborador nesta equipe.</td></tr>';
+    const teamAgentsFiltrados = teamAgents.filter(a => !searchTerm || a.nome.toLowerCase().includes(searchTerm));
+    if (teamAgentsFiltrados.length === 0) {
+      rowsHtml = '<tr><td colspan="5" class="empty">Nenhum resultado.</td></tr>';
     } else {
-      teamAgents.forEach((a, i) => {
+      teamAgentsFiltrados.forEach((a, i) => {
         const fc = flagFor(a.pctAbs);
-        rowsHtml += `
-          <tr>
-            <td class="rank">${i+1}</td>
-            <td>${a.nome}</td>
-            <td class="num">${a.ausencias}</td>
-            <td class="num"><span class="flag ${fc}">${pct(a.pctAbs)}</span></td>
-          </tr>`;
+        rowsHtml += `<tr><td class="rank">${i+1}</td><td>${a.nome}</td><td class="num">${a.fi}</td><td class="num">${a.a}</td><td class="num"><span class="flag ${fc}">${pct(a.pctAbs)}</span></td></tr>`;
+      });
+    }
+
+    let offenderCardsHtml = '';
+    if (teamOfensores.length === 0) {
+      offenderCardsHtml = '<div class="empty">Sem ausências registradas neste período.</div>';
+    } else {
+      teamOfensores.forEach((o, i) => {
+        offenderCardsHtml += `
+          <div class="offender-card">
+            <div class="rank-badge">${i+1}</div>
+            <div class="name">${o.nome}</div>
+            <div class="stat"><b>${o.ausencias}</b> ausências · FI ${o.fi} · A ${o.a}</div>
+          </div>`;
       });
     }
 
@@ -410,23 +580,27 @@ function render(data){
       <div class="kpi-row">
         <div class="kpi"><div class="label">ABS médio da equipe</div><div class="value pine">${pct(t.pctAbsMedio)}</div></div>
         <div class="kpi"><div class="label">Total de ausências</div><div class="value">${t.totalAusencias}</div></div>
-        <div class="kpi"><div class="label">Colaboradores</div><div class="value">${t.headcount}</div></div>
+        <div class="kpi"><div class="label">Média de FI</div><div class="value rose">${num1(t.mediaFI)}</div></div>
+        <div class="kpi"><div class="label">Média de Atestado</div><div class="value amber">${num1(t.mediaA)}</div></div>
       </div>
       <section>
         <h2>ABS por semana · ${t.lider}</h2>
         <div class="chart-box"><canvas id="chart-${slug(t.lider)}"></canvas></div>
       </section>
       <section>
-        <h2>Colaboradores de ${t.lider} · ordenado por ausências</h2>
+        <h2>Principais ofensores · ${t.lider}</h2>
+        <div class="offender-grid">${offenderCardsHtml}</div>
+      </section>
+      <section>
+        <h2>Todos os colaboradores de ${t.lider} · ordenado por ausências</h2>
         <table>
-          <thead><tr><th>#</th><th>Nome</th><th class="num">Ausências</th><th class="num">% ABS</th></tr></thead>
+          <thead><tr><th>#</th><th>Nome</th><th class="num">FI</th><th class="num">A</th><th class="num">% ABS</th></tr></thead>
           <tbody>${rowsHtml}</tbody>
         </table>
       </section>
     `;
     teamViewsWrap.appendChild(viewDiv);
 
-    // Gráfico semanal dessa equipe
     const teamWeekly = (data.weeklyByTeam && data.weeklyByTeam[t.lider]) || [];
     const teamLabels = teamWeekly.map(w => w.label.split(' (')[0]);
     const teamValues = teamWeekly.map(w => +(w.pct*100).toFixed(1));
@@ -436,7 +610,7 @@ function render(data){
     if (teamCtx) {
       teamCharts[canvasId] = new Chart(teamCtx, {
         type: 'bar',
-        data: { labels: teamLabels, datasets: [{ label: '% ABS na semana', data: teamValues, backgroundColor: '#10513F', borderRadius: 3, maxBarThickness: 36 }] },
+        data: { labels: teamLabels, datasets: [{ label: '% ABS na semana', data: teamValues, backgroundColor: '#10513F', borderRadius: 4, maxBarThickness: 36 }] },
         options: {
           responsive: true, maintainAspectRatio: false,
           plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
@@ -446,17 +620,12 @@ function render(data){
     }
   });
 
-  // Reaplica a view atual (mantém onde o usuário estava ao atualizar/trocar mês)
   const stillExists = document.getElementById('view-' + currentView);
   if (stillExists) {
     switchView(currentView, currentView === 'geral' ? 'Visão geral' : (document.querySelector(`.nav-item[data-view="${currentView}"] span`)?.textContent || 'Equipe'));
   } else {
     switchView('geral', 'Visão geral');
   }
-}
-
-function slug(s){
-  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-');
 }
 </script>
 </body>
