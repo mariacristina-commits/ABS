@@ -53,20 +53,24 @@
   .nav-item.active{ background:var(--pine); color:#fff; font-weight:600; }
   .nav-item .count{ font-size:11px; font-family:'IBM Plex Mono',monospace; opacity:.75; }
 
-  #mainArea{ flex:1; min-width:0; padding:30px 34px 90px; max-width:1120px; }
+  #mainArea{ flex:1; min-width:0; padding:30px 34px 90px; max-width:1120px; margin:0 auto; width:100%; }
 
   header.top{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-bottom:22px; border-bottom:1px solid var(--line); margin-bottom:22px; }
   header.top h1{ font-size:28px; margin:0; }
   header.top .eyebrow{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; margin-bottom:4px; letter-spacing:.04em; }
 
-  .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px; background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:12px 14px; box-shadow:var(--shadow); }
-  .filter-bar label{ font-size:11px; color:var(--ink-soft); margin-right:4px; }
-  select, input[type="date"]{ padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:#FAFBF9; font-family:'Inter',sans-serif; font-size:13px; color:var(--ink); cursor:pointer; }
-  input[type="date"]{ cursor:text; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
-  .icon-btn{ border:1px solid var(--line); background:var(--paper); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:13px; }
+  .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px; }
+  .filter-bar label{ display:none; }
+  select, input[type="date"]{ padding:9px 14px; border:1px solid var(--line); border-radius:20px; background:var(--paper); font-family:'Inter',sans-serif; font-size:13px; color:var(--ink); cursor:pointer; box-shadow:var(--shadow); }
+  input[type="date"]{ cursor:text; font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-soft); }
+  .icon-btn{ border:1px solid var(--line); background:var(--paper); border-radius:20px; padding:9px 16px; cursor:pointer; font-size:13px; box-shadow:var(--shadow); }
   .icon-btn:hover{ background:var(--pine-soft); }
-  .filter-sep{ width:1px; height:22px; background:var(--line); margin:0 2px; }
+  .filter-sep{ display:none; }
   .clear-filter{ font-size:12px; color:var(--pine); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:'Inter',sans-serif; }
+  .team-pill{ padding:9px 18px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer; border:1px solid transparent; background:#E7E9E6; color:var(--ink-soft); transition:all .12s; }
+  .team-pill.active{ background:var(--pine); color:#fff; box-shadow:var(--shadow); }
+  .team-pill:hover:not(.active){ background:var(--pine-soft); color:var(--pine); }
+  #searchInput{ padding:9px 14px; border:1px solid var(--line); border-radius:20px; font-family:'Inter',sans-serif; font-size:13px; background:var(--paper); min-width:170px; box-shadow:var(--shadow); }
   .updated{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; }
 
   .kpi-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
@@ -140,20 +144,10 @@
 
 <!-- APP -->
 <div id="appShell">
-  <nav id="sidebar">
-    <div class="sidebar-brand"><span class="brand-dot"></span>Unimed GF</div>
-    <div class="sidebar-title display">Painel de ABS</div>
-
-    <div class="nav-group-label">Geral</div>
-    <div class="nav-item active" data-view="geral">Visão geral</div>
-
-    <div class="nav-group-label">Por supervisor</div>
-    <div id="teamNav"></div>
-  </nav>
-
   <main id="mainArea">
     <header class="top">
       <div>
+        <div class="brand" style="display:flex;align-items:center;font-size:13px;color:var(--ink-soft);margin-bottom:6px;font-weight:600;"><span class="brand-dot"></span>Unimed GF</div>
         <div class="eyebrow" id="viewEyebrow">PAINEL DE ABS · VISÃO GERAL</div>
         <h1 class="display" id="viewTitle">Visão geral</h1>
       </div>
@@ -161,20 +155,16 @@
     </header>
 
     <div class="filter-bar">
-      <label>Mês</label>
+      <select id="anoSelect"><option value="2026">2026</option></select>
       <select id="mesSelect"></select>
-      <div class="filter-sep"></div>
-      <label>Semana</label>
       <select id="semanaSelect"></select>
-      <div class="filter-sep"></div>
-      <label>De</label>
-      <input type="date" id="desdeInput">
-      <label>Até</label>
-      <input type="date" id="ateInput">
+      <input type="date" id="desdeInput" title="De">
+      <input type="date" id="ateInput" title="Até">
+      <div id="teamPills" style="display:flex; gap:8px;">
+        <button class="team-pill active" id="pillTodos" data-view="geral">Todos os supervisores</button>
+      </div>
+      <input type="text" id="searchInput" placeholder="Buscar colaborador...">
       <button class="clear-filter" id="clearFilterBtn">Limpar filtro</button>
-      <div class="filter-sep"></div>
-      <label>Colaborador</label>
-      <input type="text" id="searchInput" placeholder="Buscar por nome..." style="padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:'Inter',sans-serif;font-size:13px;background:#FAFBF9;min-width:160px;">
       <div style="flex:1"></div>
       <button id="refreshBtnTop" class="icon-btn" title="Atualizar">↻ Atualizar</button>
     </div>
@@ -268,7 +258,7 @@ document.getElementById('semanaSelect').addEventListener('change', onSemanaChang
 document.getElementById('desdeInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
 document.getElementById('ateInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
 document.getElementById('clearFilterBtn').addEventListener('click', () => { resetPeriodFilter(); loadData(false); });
-document.querySelector('[data-view="geral"]').addEventListener('click', () => switchView('geral', 'Visão geral'));
+document.getElementById('pillTodos').addEventListener('click', () => switchView('geral', 'Visão geral'));
 
 function resetPeriodFilter(){
   document.getElementById('semanaSelect').value = '';
@@ -412,9 +402,9 @@ function slug(s){
 
 function switchView(key, title){
   currentView = key;
-  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-  const navEl = document.querySelector(`.nav-item[data-view="${key}"]`);
-  if (navEl) navEl.classList.add('active');
+  document.querySelectorAll('.team-pill').forEach(el => el.classList.remove('active'));
+  const pillEl = document.querySelector(`.team-pill[data-view="${key}"]`);
+  if (pillEl) pillEl.classList.add('active');
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   const viewEl = document.getElementById('view-' + key);
   if (viewEl) viewEl.classList.add('active');
@@ -450,16 +440,16 @@ function render(data){
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'Inter', size: 12 } } } } }
   });
 
-  // ---- Nav lateral por supervisor ----
-  const teamNav = document.getElementById('teamNav');
-  teamNav.innerHTML = '';
+  // ---- Pills de supervisor (barra de filtros) ----
+  const teamPills = document.getElementById('teamPills');
+  teamPills.querySelectorAll('.team-pill:not(#pillTodos)').forEach(el => el.remove());
   data.teams.forEach(t => {
-    const div = document.createElement('div');
-    div.className = 'nav-item';
-    div.dataset.view = 'team-' + slug(t.lider);
-    div.innerHTML = `<span>${t.lider}</span><span class="count">${t.headcount}</span>`;
-    div.addEventListener('click', () => switchView('team-' + slug(t.lider), t.lider));
-    teamNav.appendChild(div);
+    const btn = document.createElement('button');
+    btn.className = 'team-pill';
+    btn.dataset.view = 'team-' + slug(t.lider);
+    btn.textContent = t.lider;
+    btn.addEventListener('click', () => switchView('team-' + slug(t.lider), t.lider));
+    teamPills.appendChild(btn);
   });
 
   // ---- Equipes (visão geral) ----
@@ -622,7 +612,7 @@ function render(data){
 
   const stillExists = document.getElementById('view-' + currentView);
   if (stillExists) {
-    switchView(currentView, currentView === 'geral' ? 'Visão geral' : (document.querySelector(`.nav-item[data-view="${currentView}"] span`)?.textContent || 'Equipe'));
+    switchView(currentView, currentView === 'geral' ? 'Visão geral' : (document.querySelector(`.team-pill[data-view="${currentView}"]`)?.textContent || 'Equipe'));
   } else {
     switchView('geral', 'Visão geral');
   }
