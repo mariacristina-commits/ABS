@@ -9,19 +9,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root{
-    --bg: #F2F4F0;
-    --paper: #FFFFFF;
-    --ink: #1B2A24;
-    --ink-soft: #5C6B63;
-    --line: #DDE3DC;
-    --pine: #10513F;
-    --pine-soft: #E4EEE8;
-    --amber: #B9791F;
-    --amber-soft: #F6EADA;
-    --rose: #A6402F;
-    --rose-soft: #F5E4E0;
+    --bg: #050505;
+    --paper: #111111;
+    --ink: #F5F5F5;
+    --ink-soft: #B8B8B8;
+    --line: #303030;
+    --pine: #E53935;
+    --pine-soft: #351818;
+    --amber: #FFD54F;
+    --amber-soft: #382F16;
+    --rose: #FF625D;
+    --rose-soft: #3B1919;
     --sidebar-w: 226px;
-    --shadow: 0 1px 2px rgba(27,42,36,.04), 0 4px 14px rgba(27,42,36,.05);
+    --shadow: 0 2px 10px rgba(0,0,0,.28);
   }
   *{box-sizing:border-box;}
   body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
@@ -35,7 +35,7 @@
   .login-card h1{ font-size:23px; margin:14px 0 2px; }
   .login-card .sub{ font-size:12px; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:24px; }
   .login-card p{ font-size:14px; color:var(--ink-soft); line-height:1.5; margin-bottom:22px; }
-  #password{ width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:6px; font-size:15px; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; margin-bottom:14px; background:#FAFBF9; }
+  #password{ width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:6px; font-size:15px; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; margin-bottom:14px; background:#191919; }
   #password:focus{ outline:2px solid var(--pine); outline-offset:1px; }
   #loginBtn{ width:100%; padding:12px; border:none; border-radius:6px; background:var(--pine); color:#fff; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
   #loginBtn:hover{ background:#0C3F31; }
@@ -67,7 +67,7 @@
   .icon-btn:hover{ background:var(--pine-soft); }
   .filter-sep{ display:none; }
   .clear-filter{ font-size:12px; color:var(--pine); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:'Inter',sans-serif; }
-  .team-pill{ padding:9px 18px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer; border:1px solid transparent; background:#E7E9E6; color:var(--ink-soft); transition:all .12s; }
+  .team-pill{ padding:9px 18px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer; border:1px solid transparent; background:#252525; color:var(--ink-soft); transition:all .12s; }
   .team-pill.active{ background:var(--pine); color:#fff; box-shadow:var(--shadow); }
   .team-pill:hover:not(.active){ background:var(--pine-soft); color:var(--pine); }
   #searchInput{ padding:9px 14px; border:1px solid var(--line); border-radius:20px; font-family:'Inter',sans-serif; font-size:13px; background:var(--paper); min-width:170px; box-shadow:var(--shadow); }
@@ -97,7 +97,7 @@
   .bar-fill{ height:100%; background:var(--pine); border-radius:3px; }
 
   table{ width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
-  th{ text-align:left; font-size:11px; color:var(--ink-soft); font-weight:600; padding:11px 14px; border-bottom:1px solid var(--line); background:#FAFBF9; }
+  th{ text-align:left; font-size:11px; color:var(--ink-soft); font-weight:600; padding:11px 14px; border-bottom:1px solid var(--line); background:#191919; }
   td{ padding:11px 14px; font-size:13px; border-bottom:1px solid var(--line); }
   tr:last-child td{ border-bottom:none; }
   td.num, th.num{ text-align:right; font-family:'IBM Plex Mono',monospace; }
@@ -125,6 +125,27 @@
   .namechip.fi{ background:var(--rose-soft); color:var(--rose); }
   .namechip.a{ background:var(--amber-soft); color:var(--amber); }
   td.names{ max-width:360px; }
+
+  /* Ajustes de contraste para o tema escuro */
+  input, select, button { color-scheme: dark; }
+  #password, #searchInput {
+    background: #171717;
+    color: #FFFFFF;
+    border-color: var(--line);
+  }
+  #password::placeholder, #searchInput::placeholder { color: #8F8F8F; }
+  select, input[type="date"] { background: #151515; color: #F5F5F5; }
+  .icon-btn { color: #F5F5F5; }
+  .nav-item:hover, .team-pill:hover:not(.active), .icon-btn:hover { background: #292020; }
+  .team-pill { background: #252525; color: #D0D0D0; }
+  th { background: #191919; color: #D0D0D0; }
+  tbody tr:hover { background: #1C1C1C; }
+  .bar-track { background: #303030; }
+  .flag.high, .namechip.fi { background: var(--rose-soft); color: var(--rose); }
+  .flag.mid, .namechip.a { background: var(--amber-soft); color: var(--amber); }
+  .flag.low { background: var(--pine-soft); color: #FF8A85; }
+  .login-card { background: #111111; }
+  .empty { color: #B8B8B8; }
 </style>
 </head>
 <body>
@@ -232,6 +253,14 @@
 </div>
 
 <script>
+// Padrão visual dos gráficos para o tema escuro
+Chart.defaults.color = '#E5E5E5';
+Chart.defaults.borderColor = '#303030';
+Chart.defaults.plugins.legend.labels.color = '#E5E5E5';
+Chart.defaults.plugins.tooltip.backgroundColor = '#202020';
+Chart.defaults.plugins.tooltip.titleColor = '#FFFFFF';
+Chart.defaults.plugins.tooltip.bodyColor = '#F5F5F5';
+
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzstaJBuwLGm9k5fkh6sfzaaVBHCBQGlxT66SPtCCq8vVtRQVSDUD-prgeQ1mqSYbOk/exec';
 let currentPassword = '';
 let weeklyChart = null;
@@ -377,11 +406,11 @@ function renderYearly(meses){
   if (yearlyChart) yearlyChart.destroy();
   yearlyChart = new Chart(ctx, {
     type: 'line',
-    data: { labels, datasets: [{ label: '% ABS médio', data: values, borderColor: '#10513F', backgroundColor: 'rgba(16,81,63,0.12)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10513F' }] },
+    data: { labels, datasets: [{ label: '% ABS médio', data: values, borderColor: '#E53935', backgroundColor: 'rgba(229,57,53,0.16)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#E53935' }] },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
-      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#EDF1EC' } }, x: { grid: { display: false } } }
+      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#303030' } }, x: { grid: { display: false } } }
     }
   });
 }
@@ -434,7 +463,7 @@ function render(data){
     type: 'doughnut',
     data: {
       labels: ['Falta Injustificada (FI)', 'Atestado (A)'],
-      datasets: [{ data: [data.kpis.totalFI, data.kpis.totalA], backgroundColor: ['#A6402F', '#B9791F'], borderWidth: 0 }]
+      datasets: [{ data: [data.kpis.totalFI, data.kpis.totalA], backgroundColor: ['#FF625D', '#FFD54F'], borderWidth: 0 }]
     },
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'Inter', size: 12 } } } } }
   });
@@ -470,7 +499,7 @@ function render(data){
   // ---- Pizza: participação de cada equipe no total de ausências ----
   const pieCtx = document.getElementById('teamPieChart');
   if (teamPieChart) teamPieChart.destroy();
-  const pieColors = ['#10513F', '#B9791F', '#A6402F', '#5C6B63', '#3F7A5F'];
+  const pieColors = ['#E53935', '#FFD54F', '#FF625D', '#9E9E9E', '#4CAF50'];
   teamPieChart = new Chart(pieCtx, {
     type: 'pie',
     data: {
@@ -493,11 +522,11 @@ function render(data){
   if (weeklyChart) weeklyChart.destroy();
   weeklyChart = new Chart(ctx, {
     type: 'bar',
-    data: { labels, datasets: [{ label: '% ABS na semana', data: values, backgroundColor: '#10513F', borderRadius: 4, maxBarThickness: 36 }] },
+    data: { labels, datasets: [{ label: '% ABS na semana', data: values, backgroundColor: '#E53935', borderRadius: 4, maxBarThickness: 36 }] },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
-      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#EDF1EC' } }, x: { grid: { display: false } } }
+      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#303030' } }, x: { grid: { display: false } } }
     }
   });
 
@@ -599,11 +628,11 @@ function render(data){
     if (teamCtx) {
       teamCharts[canvasId] = new Chart(teamCtx, {
         type: 'bar',
-        data: { labels: teamLabels, datasets: [{ label: '% ABS na semana', data: teamValues, backgroundColor: '#10513F', borderRadius: 4, maxBarThickness: 36 }] },
+        data: { labels: teamLabels, datasets: [{ label: '% ABS na semana', data: teamValues, backgroundColor: '#E53935', borderRadius: 4, maxBarThickness: 36 }] },
         options: {
           responsive: true, maintainAspectRatio: false,
           plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + '%' } } },
-          scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#EDF1EC' } }, x: { grid: { display: false } } }
+          scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#303030' } }, x: { grid: { display: false } } }
         }
       });
     }
