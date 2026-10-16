@@ -121,6 +121,28 @@
 
   #refreshBtn{ margin-top:8px; font-size:12px; color:var(--pine); background:none; border:none; cursor:pointer; text-decoration:underline; padding:0; font-family:'Inter',sans-serif; }
   .empty{ padding:26px; text-align:center; color:var(--ink-soft); font-size:13px; }
+  .page-subtitle{color:var(--ink-soft);font-size:13px;line-height:1.55;margin-top:8px;max-width:660px}
+  .section-intro{font-size:12px;color:var(--ink-soft);line-height:1.55;margin:-5px 0 14px}
+  .reason-panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:var(--shadow)}
+  .reason-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .reason-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .reason-field.full{grid-column:1/-1}
+  .reason-field label{font-size:11px;color:var(--ink-soft);font-weight:600}
+  .reason-field input,.reason-field select,.reason-field textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:#171717;color:var(--ink);font:13px 'Inter',sans-serif;min-width:0}
+  .reason-field textarea{min-height:76px;resize:vertical}
+  .reason-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  .primary-btn,.secondary-btn,.delete-note{border:1px solid var(--line);border-radius:6px;padding:10px 14px;font:600 12px 'Inter',sans-serif;cursor:pointer}
+  .primary-btn{background:var(--pine);color:#fff;border-color:var(--pine)}
+  .primary-btn:hover{filter:brightness(1.1)}
+  .secondary-btn{background:#202020;color:var(--ink)}
+  .delete-note{padding:5px 8px;background:transparent;color:var(--rose);font-size:11px}
+  .storage-note{font-size:11px;color:var(--ink-soft);line-height:1.5;margin-top:12px}
+  .reason-table-wrap{overflow-x:auto;margin-top:16px}
+  .reason-table-wrap table{min-width:650px}
+  .reason-type{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700}
+  .reason-type.fi{background:var(--rose-soft);color:var(--rose)}
+  .reason-type.atestado{background:var(--amber-soft);color:var(--amber)}
+  @media(max-width:600px){.reason-form{grid-template-columns:1fr}.reason-field.full{grid-column:auto}#mainArea{padding:22px 16px 60px}header.top h1{font-size:24px}}
   .namechip{ display:inline-block; padding:2px 9px; border-radius:10px; font-size:11px; margin:2px 4px 2px 0; }
   .namechip.fi{ background:var(--rose-soft); color:var(--rose); }
   .namechip.a{ background:var(--amber-soft); color:var(--amber); }
@@ -153,9 +175,9 @@
 <!-- LOGIN -->
 <div id="login">
   <div class="login-card">
-    <span class="brand-dot"></span><strong>Unimed GF</strong>
+    <span class="brand-dot"></span><strong>Operação Unimed UGF</strong>
     <h1 class="display">Painel de ABS</h1>
-    <div class="sub mono">VISÃO COORDENAÇÃO</div>
+    <div class="sub mono">OPERAÇÃO UNIMED UGF</div>
     <p>Este painel é restrito. Digite a senha de acesso para continuar.</p>
     <input type="password" id="password" placeholder="••••••••••••">
     <button id="loginBtn">Entrar</button>
@@ -168,9 +190,10 @@
   <main id="mainArea">
     <header class="top">
       <div>
-        <div class="brand" style="display:flex;align-items:center;font-size:13px;color:var(--ink-soft);margin-bottom:6px;font-weight:600;"><span class="brand-dot"></span>Unimed GF</div>
-        <div class="eyebrow" id="viewEyebrow">PAINEL DE ABS · VISÃO GERAL</div>
-        <h1 class="display" id="viewTitle">Visão geral</h1>
+        
+        <div class="eyebrow" id="viewEyebrow">GESTÃO OPERACIONAL · UNIMED GRANDE FLORIANÓPOLIS</div>
+        <h1 class="display" id="viewTitle">Indicadores de ABS da Operação Unimed</h1>
+        <div class="page-subtitle">Acompanhamento de absenteísmo, faltas injustificadas e atestados para apoiar a análise de tendências e as ações de gestão.</div>
       </div>
       <div class="updated" id="updatedAt"></div>
     </header>
@@ -225,6 +248,27 @@
             <div class="kpi" style="margin-bottom:12px;"><div class="label">Total Falta Injustificada (FI)</div><div class="value rose" id="totalFIBig">—</div></div>
             <div class="kpi"><div class="label">Total Atestado (A)</div><div class="value amber" id="totalABig">—</div></div>
           </div>
+        </div>
+      </section>
+
+      <section id="registroMotivosSection">
+        <h2>Registro de motivos de ausência</h2>
+        <p class="section-intro">Registre o motivo informado para faltas injustificadas e atestados. Esses registros ajudam a contextualizar os indicadores e organizar os acompanhamentos.</p>
+        <div class="reason-panel">
+          <form id="reasonForm">
+            <div class="reason-form">
+              <div class="reason-field"><label for="reasonDate">Data da ausência *</label><input type="date" id="reasonDate" required></div>
+              <div class="reason-field"><label for="reasonType">Tipo de ausência *</label><select id="reasonType" required><option value="FI">Falta injustificada (FI)</option><option value="Atestado">Atestado</option></select></div>
+              <div class="reason-field"><label for="reasonName">Colaborador *</label><input id="reasonName" type="text" maxlength="120" placeholder="Nome do colaborador" required></div>
+              <div class="reason-field"><label for="reasonCategory">Motivo informado *</label><select id="reasonCategory" required><option value="">Selecione o motivo</option><option>Sem justificativa informada</option><option>Problema de transporte</option><option>Problema familiar</option><option>Compromisso pessoal</option><option>Problema de saúde</option><option>Consulta ou exame</option><option>Acompanhamento de familiar</option><option>Atestado médico sem detalhamento</option><option>Outro</option></select></div>
+              <div class="reason-field full"><label for="reasonDetails">Observações do acompanhamento</label><textarea id="reasonDetails" maxlength="600" placeholder="Contexto informado, contato realizado, retorno pendente ou ação combinada. Evite inserir dados médicos sensíveis."></textarea></div>
+            </div>
+            <div class="reason-actions"><button class="primary-btn" type="submit">Salvar registro</button><button class="secondary-btn" type="button" id="clearReasonForm">Limpar campos</button><span id="reasonStatus" class="updated" role="status"></span></div>
+          </form>
+          <div class="reason-table-wrap">
+            <table><thead><tr><th>Data</th><th>Tipo</th><th>Colaborador</th><th>Motivo</th><th>Observações</th><th>Ação</th></tr></thead><tbody id="reasonRecordsBody"><tr><td colspan="6" class="empty">Nenhum motivo registrado ainda.</td></tr></tbody></table>
+          </div>
+          <div class="storage-note">Privacidade: os registros ficam salvos somente neste navegador e neste dispositivo; não são enviados para a planilha nem compartilhados automaticamente com outros supervisores. Não registre CID, diagnóstico ou detalhes clínicos.</div>
         </div>
       </section>
 
@@ -286,7 +330,8 @@ document.getElementById('semanaSelect').addEventListener('change', onSemanaChang
 document.getElementById('desdeInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
 document.getElementById('ateInput').addEventListener('change', () => { document.getElementById('semanaSelect').value = ''; loadData(false); });
 document.getElementById('clearFilterBtn').addEventListener('click', () => { resetPeriodFilter(); loadData(false); });
-document.getElementById('pillTodos').addEventListener('click', () => switchView('geral', 'Visão geral'));
+document.getElementById('pillTodos').addEventListener('click', () => switchView('geral', 'Indicadores de ABS da Operação Unimed'));
+initReasonRegister();
 
 function resetPeriodFilter(){
   document.getElementById('semanaSelect').value = '';
@@ -437,6 +482,8 @@ function switchView(key, title){
   const viewEl = document.getElementById('view-' + key);
   if (viewEl) viewEl.classList.add('active');
   document.getElementById('viewTitle').textContent = title;
+  const subtitle = document.querySelector('.page-subtitle');
+  if (subtitle) subtitle.style.display = key === 'geral' ? 'block' : 'none';
   document.getElementById('viewEyebrow').textContent = key === 'geral' ? 'PAINEL DE ABS · VISÃO GERAL' : 'PAINEL DE ABS · SUPERVISOR';
 }
 
@@ -640,10 +687,67 @@ function render(data){
 
   const stillExists = document.getElementById('view-' + currentView);
   if (stillExists) {
-    switchView(currentView, currentView === 'geral' ? 'Visão geral' : (document.querySelector(`.team-pill[data-view="${currentView}"]`)?.textContent || 'Equipe'));
+    switchView(currentView, currentView === 'geral' ? 'Indicadores de ABS da Operação Unimed' : (document.querySelector(`.team-pill[data-view="${currentView}"]`)?.textContent || 'Equipe'));
   } else {
     switchView('geral', 'Visão geral');
   }
+}
+
+// Registro local de motivos: não envia informações pessoais para a planilha.
+const REASON_STORAGE_KEY = 'unimed_abs_reason_records_v1';
+function getReasonRecords(){
+  try { return JSON.parse(localStorage.getItem(REASON_STORAGE_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function saveReasonRecords(records){
+  try { localStorage.setItem(REASON_STORAGE_KEY, JSON.stringify(records)); return true; }
+  catch(e) { document.getElementById('reasonStatus').textContent = 'Não foi possível salvar neste navegador.'; return false; }
+}
+function escapeHtml(value){
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function renderReasonRecords(){
+  const tbody = document.getElementById('reasonRecordsBody');
+  if (!tbody) return;
+  const records = getReasonRecords().sort((a,b) => b.date.localeCompare(a.date) || b.createdAt-a.createdAt);
+  if (!records.length){ tbody.innerHTML = '<tr><td colspan="6" class="empty">Nenhum motivo registrado ainda.</td></tr>'; return; }
+  tbody.innerHTML = records.map(r => `<tr><td>${escapeHtml(r.date.split('-').reverse().join('/'))}</td><td><span class="reason-type ${r.type === 'FI' ? 'fi' : 'atestado'}">${escapeHtml(r.type === 'FI' ? 'Falta injustificada' : 'Atestado')}</span></td><td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.category)}</td><td>${escapeHtml(r.details || '—')}</td><td><button class="delete-note" type="button" data-delete-reason="${escapeHtml(r.id)}" aria-label="Excluir registro">Excluir</button></td></tr>`).join('');
+  tbody.querySelectorAll('[data-delete-reason]').forEach(btn => btn.addEventListener('click', () => {
+    if (!confirm('Excluir este registro de motivo?')) return;
+    saveReasonRecords(getReasonRecords().filter(r => r.id !== btn.dataset.deleteReason));
+    renderReasonRecords();
+    document.getElementById('reasonStatus').textContent = 'Registro excluído.';
+  }));
+}
+function initReasonRegister(){
+  const form = document.getElementById('reasonForm');
+  if (!form) return;
+  const dateField = document.getElementById('reasonDate');
+  dateField.value = new Date().toLocaleDateString('en-CA');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const record = {
+      id: (Date.now().toString(36) + Math.random().toString(36).slice(2,8)),
+      createdAt: Date.now(),
+      date: dateField.value,
+      type: document.getElementById('reasonType').value,
+      name: document.getElementById('reasonName').value.trim(),
+      category: document.getElementById('reasonCategory').value,
+      details: document.getElementById('reasonDetails').value.trim()
+    };
+    if (!record.date || !record.name || !record.category) return;
+    const records = getReasonRecords(); records.push(record);
+    if (saveReasonRecords(records)) {
+      form.reset(); dateField.value = new Date().toLocaleDateString('en-CA');
+      document.getElementById('reasonStatus').textContent = 'Registro salvo neste navegador.';
+      renderReasonRecords();
+    }
+  });
+  document.getElementById('clearReasonForm').addEventListener('click', () => {
+    form.reset(); dateField.value = new Date().toLocaleDateString('en-CA');
+    document.getElementById('reasonStatus').textContent = '';
+  });
+  renderReasonRecords();
 }
 </script>
 </body>
